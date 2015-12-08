@@ -42,4 +42,9 @@ app.put('/puppies/:name', function (req, res) {
   res.send('ok?')
 });
 
+app.delete('/puppies/:name', function (req, res) {
+  // delete puppy from db
+  // send a 204 ok response back
+});
+
 app.listen(3000);
