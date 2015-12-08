@@ -6,9 +6,8 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js')
     title= title
   body
-    h1 Hello #{title}
-    each puppy in puppies
-      a(href="/puppies/" + puppy.name)
-        p #{puppy.name}
-    a(href="/puppies/new") new
+    h1 Hi #{puppy.name}
+    h2 Breed:
+    p= puppy.breed
+    a(href="/puppies/") home
     script(type='text/javascript', src='/app.js')

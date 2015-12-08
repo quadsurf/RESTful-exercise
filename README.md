@@ -23,3 +23,9 @@ DELETE ‘puppies/:id’ - removes resource
 - [ExpressJS](http://expressjs.com/en/index.html)
 - [Lowdb](https://github.com/typicode/lowdb)
 - [Jade](http://jade-lang.com)
+
+## Usage
+
+`npm install`
+
+run with `nodemon`
