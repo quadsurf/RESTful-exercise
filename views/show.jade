@@ -9,5 +9,7 @@ html
     h1 Hi #{puppy.name}
     h2 Breed:
     p= puppy.breed
+    a(href="/puppies/" + puppy.name + "/edit") edit
+    br
     a(href="/puppies/") home
     script(type='text/javascript', src='/app.js')

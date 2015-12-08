@@ -1,21 +1,24 @@
 {
   "puppies": [
     {
-      "name": "iago"
+      "name": "iago",
+      "breed": "terrier"
     },
     {
-      "name": "isis"
+      "name": "isis",
+      "breed": "staffy"
     },
     {
-      "name": "scooby doo"
+      "name": "scooby doo",
+      "breed": "great dane"
     },
     {
       "name": "lassie",
       "breed": "border collie"
     },
     {
-      "name": "example name",
-      "breed": "example breed"
+      "name": "puppy",
+      "breed": "dog"
     }
   ]
 }

@@ -11,7 +11,6 @@ app.use(bodyParser())
 
 app.get('/puppies', function(req, res){
   var puppies = db('puppies').value();
-  console.log(puppies);
   res.render('index', { title: "Puppies", puppies: puppies})
 });
 
@@ -29,6 +28,18 @@ app.post('/puppies/new', function (req, res) {
 app.get('/puppies/:name', function (req, res) {
   var puppy = db('puppies').find({name: req.params.name})
   res.render('show', {puppy: puppy})
+});
+
+app.get('/puppies/:name/edit', function (req, res) {
+  var puppy = db('puppies').find({name: req.params.name})
+  res.render('edit', {puppy: puppy})
+});
+
+app.put('/puppies/:name', function (req, res) {
+  var name = req.body.name;
+  var breed = req.body.breed;
+  var puppy = db('puppies').chain().find({name: req.params.name}).assign({name: name, breed: breed}).value()
+  res.send('ok?')
 });
 
 app.listen(3000);
