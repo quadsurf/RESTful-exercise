@@ -9,10 +9,13 @@ app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser())
 
-app.get('/puppies', function(req, res){
-  var puppies = db('puppies').value();
-  res.render('index', { title: "Puppies", puppies: puppies})
+app.get('/', function (req, res) {
+  res.redirect('/puppies')
 });
+
+// ******************
+// *****CREATE*******
+// ******************
 
 app.get('/puppies/new', function(req, res) {
   res.render('new')
@@ -21,30 +24,48 @@ app.get('/puppies/new', function(req, res) {
 app.post('/puppies/new', function (req, res) {
   var name = req.body.name;
   var breed = req.body.breed;
-  db('puppies').push({name: name, breed: breed});
+  var id = (db('puppies').value().length + 1).toString();
+  db('puppies').push({id: id, name: name, breed: breed});
   res.redirect('/puppies')
 });
 
-app.get('/puppies/:name', function (req, res) {
-  var puppy = db('puppies').find({name: req.params.name})
+// ******************
+// *******READ*******
+// ******************
+
+app.get('/puppies', function(req, res){
+  var puppies = db('puppies').value();
+  res.render('index', { title: "Puppies", puppies: puppies})
+});
+
+app.get('/puppies/:id', function (req, res) {
+  var puppy = db('puppies').find({id: req.params.id})
   res.render('show', {puppy: puppy})
 });
 
-app.get('/puppies/:name/edit', function (req, res) {
-  var puppy = db('puppies').find({name: req.params.name})
+// ******************
+// *****UPDATE*******
+// ******************
+
+app.get('/puppies/:id/edit', function (req, res) {
+  var puppy = db('puppies').find({id: req.params.id})
   res.render('edit', {puppy: puppy})
 });
 
-app.put('/puppies/:name', function (req, res) {
+app.put('/puppies/:id', function (req, res) {
   var name = req.body.name;
   var breed = req.body.breed;
-  var puppy = db('puppies').chain().find({name: req.params.name}).assign({name: name, breed: breed}).value()
-  res.send('ok?')
+  var puppy = db('puppies').chain().find({id: req.params.id}).assign({name: name, breed: breed}).value()
+  res.send('200')
 });
 
-app.delete('/puppies/:name', function (req, res) {
-  // delete puppy from db
-  // send a 204 ok response back
+// ******************
+// *****DELETE*******
+// ******************
+
+app.delete('/puppies/:id', function (req, res) {
+  db('puppies').remove({ id: req.params.id })
+  res.send('204')
 });
 
 app.listen(3000);

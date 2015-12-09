@@ -1,24 +1,24 @@
 {
   "puppies": [
     {
-      "name": "iago",
-      "breed": "terrier"
-    },
-    {
+      "id": "1",
       "name": "isis",
       "breed": "staffy"
     },
     {
+      "id": "2",
       "name": "scooby doo",
       "breed": "great dane"
     },
     {
+      "id": "3",
       "name": "lassie",
       "breed": "border collie"
     },
     {
-      "name": "puppy",
-      "breed": "dog"
+      "id": "4",
+      "name": "iago",
+      "breed": "terrier"
     }
   ]
 }
